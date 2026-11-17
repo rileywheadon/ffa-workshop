@@ -1,0 +1,22 @@
+---
+title: "ffaframework: Environment Check"
+output: html_notebook
+---
+
+This R Notebook checks that the project's `renv` environment is active and that `ffaframework` loads and runs successfully.
+
+## 1. Load ffaframework
+
+```{r setup, message=FALSE, warning=FALSE}
+renv::restore(prompt = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+library(ffaframework)
+```
+
+## 2. Plot Data from "Kootenai River at Porthill (08NH021)"
+
+```{r}
+df <- data_local("CAN-08NH021.csv")
+head(df)
+plot_ams_data(df$max, df$year, title = "Kootenai River at Porthill (08NH021)")
+```
